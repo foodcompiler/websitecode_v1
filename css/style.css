@@ -325,7 +325,7 @@ footer {
 /* Logo */
 header hgroup {
     position: absolute;
-    background: url(../images/logo.png) no-repeat;
+    /*background: url(../images/logo.png) no-repeat;*/
     height: 31px;
     width: 312px;
     display: block;
@@ -476,26 +476,26 @@ section#main .row .col h2 {
 }
 
 /* -----------------------------------------
-   Services
+   Blog
 ------------------------------------------- */
-section#services h1 {
+section#blog h1 {
    margin: 0 0 25px 0;
 }
-section#services .row .col img.align-left {
+section#blog .row .col img.align-left {
     margin-top: 13px;
     margin-right: 12px;
 }
 
 /* ---------------------------------------
-    Portfolio
+    compilation
 ----------------------------------------- */
-section#portfolio ul.folio-list {
+section#compilation ul.folio-list {
     margin: 25px 0;
     padding: 0;
     width: 970px;
     list-style: none;
 }
-section#portfolio ul.folio-list li {
+section#compilation ul.folio-list li {
     float: left;
     margin-right: 29px;
     margin-bottom: 10px;
@@ -504,18 +504,18 @@ section#portfolio ul.folio-list li {
     height: 230px;
     max-height: 250px;
 }
-section#portfolio ul.folio-list li .thumb {
+section#compilation ul.folio-list li .thumb {
     margin: 0 0 5px 0;
     padding: 0;
     background: url(../images/thumb-frame.png) no-repeat;
     width: 294px;
     height: 205px;
 }
-section#portfolio ul.folio-list li .thumb img {
+section#compilation ul.folio-list li .thumb img {
     margin-top: 18px;
     margin-left: 18px;
 }
-section#portfolio ul.folio-list li h3.entry-title {
+section#compilation ul.folio-list li h3.entry-title {
     font-size: 14px;
     line-height: 25px;
     margin-left: 16px;
