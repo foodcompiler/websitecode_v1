@@ -500,16 +500,16 @@ section#compilation ul.folio-list li {
     margin-right: 29px;
     margin-bottom: 10px;
     margin-top: 10px;
-    width: 294px;
-    height: 230px;
+    width: 125px;
+    height: 170px;
     max-height: 250px;
 }
 section#compilation ul.folio-list li .thumb {
     margin: 0 0 5px 0;
     padding: 0;
-    background: url(../images/thumb-frame.png) no-repeat;
-    width: 294px;
-    height: 205px;
+    background: #ffffff;
+    width: 140px;
+    height: 140px;
 }
 section#compilation ul.folio-list li .thumb img {
     margin-top: 18px;
