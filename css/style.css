@@ -379,12 +379,11 @@ section#main h1 {
     margin-bottom: 15px;
 }
 section#main .intro-box {
-    float:left;
-    width:460px;
-    min-height: 300px;
+    text-align:center;
+    width:100%;
 }
 section#main .row .col h2 {
-    margin-top: 15px;
+    margin-top: 45px;
     margin-bottom: 10px;
 }
 
