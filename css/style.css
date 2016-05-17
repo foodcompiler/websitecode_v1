@@ -475,12 +475,12 @@ section#main .row .col h2 {
 }
 
 /* -----------------------------------------
-   Blog
+  whereandwhat
 ------------------------------------------- */
-section#blog h1 {
+section#whereandwhat h1 {
    margin: 0 0 25px 0;
 }
-section#blog .row .col img.align-left {
+section#whereandwhat .row .col img.align-left {
     margin-top: 13px;
     margin-right: 12px;
 }
