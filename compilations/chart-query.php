@@ -2,7 +2,7 @@
 
 $servername = '127.0.0.1';
 $username = 'root';
-$password = 'password';
+$password = '';
 
 $conn = new mysqli($servername, $username, $password);
 
@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 } 
 
-mysqli_select_db($conn, 'foodcompiler_v2' );
+mysqli_select_db($conn, 'food_db' );
 
 $selectedCategory = $_GET['category'];
 
@@ -21,7 +21,7 @@ else {
 	$selectedType = $_GET['selectedType'];
 }
 
-$query = "SELECT name, restaurant, rating FROM food_all WHERE category='$selectedCategory' && type='$selectedType'";
+$query = "SELECT dishname, restaurant, rating FROM foodtable WHERE category='$selectedCategory' && type='$selectedType'";
 $queryResult = mysqli_query($conn, $query);
 
 $table = array();
@@ -34,12 +34,11 @@ $rows = array();
 foreach($queryResult as $row){
     $temp = array();
      
-    $temp[] = array('v' => (string) $row['name']. '('.$row['restaurant'].')');
+    $temp[] = array('v' => (string) $row['dishname']. '('.$row['restaurant'].')');
     $temp[] = array('v' => (int) $row['rating']); 
     $rows[] = array('c' => $temp);
     }
 
-$queryResult->free();
  
 $table['rows'] = $rows;
  

@@ -1,13 +1,4 @@
-/*
-- find selected radio button (selectedType)
-
-- selectedType will go in sql query as SELECT name, restaurant, rating from food_all WHERE
-category=category && type=selectedType
-
-*/
-
 function typeChanged() {
-	
     var options = {
         animation: {
             startup:true,
