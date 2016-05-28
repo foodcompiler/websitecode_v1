@@ -1,17 +1,17 @@
 <?php
 require('../../common.php');
 
-if (!isset($_GET['location'])) {
+if (!isset($_GET['restaurant'])) {
 	die("");
 }
 
-function searchForLocations($location) {
+function search($keyword) {
   
     $db = getDbConnection();
-    $stmt = $db->prepare("SELECT DISTINCT location FROM foodtable WHERE location LIKE '%".$location."%' ORDER BY location ASC");
+    $stmt = $db->prepare("SELECT DISTINCT restaurant FROM foodtable WHERE restaurant LIKE '%".$keyword."%' ORDER BY restaurant ASC");
 
-    $location = $location . '%';
-    $stmt->bindParam(1, $location, PDO::PARAM_STR, 100);
+    $keyword = $keyword . '%';
+    $stmt->bindParam(1, $keyword, PDO::PARAM_STR, 100);
 
     $isQueryOk = $stmt->execute();
   
@@ -29,8 +29,8 @@ function searchForLocations($location) {
     return $results;
 }
 
-$location = $_GET['location'];
+$restaurant = $_GET['restaurant'];
 
-$data = searchForLocations($location);
+$data = search($restaurant);
 
 echo json_encode($data, JSON_HEX_APOS);
