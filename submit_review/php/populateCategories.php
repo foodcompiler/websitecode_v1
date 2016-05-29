@@ -1,12 +1,12 @@
 <?php
 echo '<select name="select">';
 echo '<option value="">Select Category</option>'; 
-echo '<option value="">Aloo Paratha</option>';
-echo '<option value="">Beverages</option>';
-echo '<option value="">Biryani</option>';
-echo '<option value="">Bruschetta</option>';
-echo '<option value="">Burger</option>';
-echo '<option value="">Butter Chicken</option>';
+echo '<option value="alooparatha">Aloo Paratha</option>';
+echo '<option value="beverage">Beverage</option>';
+echo '<option value="biryani">Biryani</option>';
+echo '<option value="bruschetta">Bruschetta</option>';
+echo '<option value="burger">Burger</option>';
+echo '<option value="butterchicken">Butter Chicken</option>';
 echo '<option value="">Chicken Curry</option>';
 echo '<option value="">Chicken gravy</option>';
 echo '<option value="">Chicken Masala</option>';

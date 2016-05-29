@@ -3,7 +3,7 @@
 <body>
     <div>
         <h2>Fill in the details to share your review.</h2>
-        <form action="php/submit_review.php" method="post">
+        <form action="php/submitReview.php" method="post">
             Instagram handle:
             <input type="text" name="instagram">
             <hr> 
@@ -27,16 +27,9 @@
             <? include ('php/populateCategories.php'); ?>
             <hr> 
             
-            
-            
             Rating:
-            <select name="rating">
-                <option value="">Select rating</option>
-  				<option value="3">Delicious</option>
-  				<option value="2">Average</option>
-  				<option value="1">Bad</option>
-			</select>
-            <br><br>
+            <? include ('php/populateRatings.php') ?>
+            <hr>
 
             <input type="submit" value="Submit">
         </form>
