@@ -1,5 +1,5 @@
 <?php
-echo '<select name="select">';
+echo '<select name="categorySelector" id="categorySelector">';
 echo '<option value="">Select Category</option>'; 
 echo '<option value="alooparatha">Aloo Paratha</option>';
 echo '<option value="beverage">Beverage</option>';

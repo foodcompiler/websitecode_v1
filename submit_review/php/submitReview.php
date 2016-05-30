@@ -1,27 +1,36 @@
 <?php
 require('../../common.php');
 
+$instagram_handle_error = "";
+$instagram_handle = "";
+
 if(isset($_POST["submit"])){
 	
-	// $instagram_handle = $_POST['instagram_handle'];
-	// $category_internal = $_POST['category_internal'];
-	// $category_display = $_POST['category_display'];
-	// $location_internal = $_POST['location_internal'];
-	// $location_display = $_POST['location_display'];
-	// $restaurant_internal = $_POST['restaurant_internal'];
-	// $restaurant_display = $_POST['restaurant_display'];
-	// $dish_name = $_POST['dish_name'];
-	// $cost = $_POST['cost'];
-	// $rating_internal = $_POST['rating_internal'];
-	// $rating_display = $_POST['rating_display'];	
+	if (empty($_POST["instagram_handle"])) {
+    	$instagram_handle_error = "Instagram handle is required";
+		die();
+  	} else {
+    	$instagram_handle = $_POST['instagram_handle'];
+  	}
 	
-	// $db = getDbConnection();
+	$category_internal = $_POST['categorySelector'];
+	$location = $_POST['location'];
+	$restaurant = $_POST['restaurant'];
+	$dish_name = $_POST['dish_name'];
+	$price = $_POST['price'];
+	$rating = $_POST['rating'];
 	
-	// $sql = "INSERT INTO foodtable (instagram_handle, category_internal) VALUES ('$instagram_handle','$instagram_handle','$instagram_handle','$instagram_handle','$instagram_handle','$instagram_handle','$instagram_handle',)";
-	// if ($dbh->query($sql)) {
-	// 	echo "<script type= 'text/javascript'>alert('New Record Inserted Successfully');</script>";
-	// }
-	// else{
-	// 	echo "<script type= 'text/javascript'>alert('Data not successfully Inserted.');</script>";
-	// }
+	$db = getDbConnection();
+	
+	$sql = "INSERT INTO foodtable (dish_id, instagram_handle, category_internal, location, restaurant, dish_name, price, rating, is_validated) VALUES ('', '$instagram_handle','$category_internal', '$location', '$restaurant','$dish_name', '$price', '$rating', 0)";
+	
+	if ($db->query($sql)) {
+		echo "Thank you for sharing your response. <a href='../index.php'>Click here</a> to submit another response.";
+	}
+	else{
+		echo "Error submitting response, please try again. If problem persists, please email to foodcompiler@gmail.com with the details.";
+	}
+}
+else {
+	echo 'here';
 }

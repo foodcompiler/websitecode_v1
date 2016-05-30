@@ -50,12 +50,12 @@ $(document).ready(function () {
 		}
 	});
 	
-	$("#dishName").keyup(function () {
-		var dishName = $("#dishName").val();
-		if (dishName.length >= MIN_LENGTH) {
+	$("#dish_name").keyup(function () {
+		var dish_name = $("#dish_name").val();
+		if (dish_name.length >= MIN_LENGTH) {
 			$.get("../submit_review/php/populateDishNames.php",
 				{
-					dishName: dishName
+					dish_name: dish_name
 				}).done(function (data) {
 					$('#dishNameResults').html('');
 					var results = jQuery.parseJSON(data);
@@ -65,12 +65,12 @@ $(document).ready(function () {
 
 					$('.item').click(function () {
 						var text = $(this).html();
-						$('#dishName').val(text);
+						$('#dish_name').val(text);
 					})
 
 				});
 		} else {
-			$('#dishName').html('');
+			$('#dish_name').html('');
 		}
 	});
 
@@ -84,7 +84,7 @@ $(document).ready(function () {
 	}).focus(function () {
 		$("#restaurantResults").show();
 	});
-	$("#dishName").blur(function () {
+	$("#dish_name").blur(function () {
 		$("#dishNameResults").fadeOut(500);
 	}).focus(function () {
 		$("#dishNameResults").show();

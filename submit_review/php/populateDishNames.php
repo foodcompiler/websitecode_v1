@@ -1,7 +1,7 @@
 <?php
 require('../../common.php');
 
-if (!isset($_GET['dishName'])) {
+if (!isset($_GET['dish_name'])) {
 	die("");
 }
 
@@ -29,8 +29,8 @@ function search($keyword) {
     return $results;
 }
 
-$dishName = $_GET['dishName'];
+$dish_name = $_GET['dish_name'];
 
-$data = search($dishName);
+$data = search($dish_name);
 
 echo json_encode($data, JSON_HEX_APOS);
