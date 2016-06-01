@@ -4,15 +4,23 @@
 
 </head>
 
-<body>
-	<div id="filterDiv">
+<body onload="loadCategories()">
+    <div id="categories">
+	</div>
+	
+	<div id="filterDiv" >
 		<h1>Filters</h1>
 		<form>
 			<input type="radio" id="nonveg" name="type" value="nonveg" onchange="typeChanged()" checked>Non Veg<br>
 			<input type="radio" id="veg" name="type" value="veg" onchange="typeChanged()">Veg<br>
 		</form>
 	</div>
-	<div id="chart-div" style="width: 1024px; height: 500px;"></div>
+	<div id="chart-div" style="width: 1024px; height: 500px;">
+		<div id="LoadingImage" style="width: 1024px; height: 500px; display:table-cell; vertical-align:middle; text-align:center">
+			<p>Something cool is coming..</p>
+			<img src="ajax-loader.gif" />
+		</div>
+	</div>
 <br/>
 <br/>
 

@@ -1,7 +1,9 @@
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
+function drawChart(category, type) {
+    $("#LoadingImage").show();
+    
     var category = window.location.hash.substring(1);
     var options = {
         animation: {
@@ -17,11 +19,12 @@ function drawChart() {
             }
         }
     };
-
+    
     var jsonData = $.ajax({
         url: "chart-query.php",
         data: {
-            category: category
+            category: category, 
+            selectedType: type
         },
         dataType: "json",
         async: false
@@ -29,5 +32,11 @@ function drawChart() {
 
     var data = new google.visualization.DataTable(jsonData);
     var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
+    
+    google.visualization.events.addListener(chart, 'ready', function() {
+        $("#LoadingImage").hide();
+    });
+    
     chart.draw(data, options);
+
 }
