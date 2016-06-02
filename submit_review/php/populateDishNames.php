@@ -1,5 +1,5 @@
 <?php
-require('../../common.php');
+require('../../common/common.php');
 
 if (!isset($_GET['dish_name'])) {
 	die("");

@@ -1,12 +1,14 @@
 <?php
-    require('../common.php');
+    require('../common/common.php');
 
     try {
-        $selectedCategory = $_GET['category'];
-
         $db = getDbConnection();
-        $queryResult = $db->query("SELECT dish_name, restaurant, rating from foodtable WHERE category_internal='$selectedCategory' AND is_validated=1");
-
+        
+        $selectedCategory = $_GET['category'];
+        $selectedType = $_GET['type'];
+        
+        $queryResult = $db->query("SELECT dish_name, restaurant, rating, type from foodtable WHERE category_internal='$selectedCategory' AND type='$selectedType' AND is_validated=1 ORDER BY price ASC");
+        
         $table = array();
         $table['cols'] = array(array('id' => '', 'label' => 'Dish', 'type' => 'string'), array('id' => '', 'label' => 'Rating', 'type' => 'number'));
     

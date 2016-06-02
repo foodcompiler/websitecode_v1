@@ -1,5 +1,5 @@
 <?php
-require('../../common.php');
+require('../../common/common.php');
 
 $instagram_handle_error = "";
 $instagram_handle = "";
@@ -22,7 +22,7 @@ if(isset($_POST["submit"])){
 	
 	$db = getDbConnection();
 	
-	$sql = "INSERT INTO foodtable (dish_id, instagram_handle, category_internal, location, restaurant, dish_name, price, rating, is_validated) VALUES ('', '$instagram_handle','$category_internal', '$location', '$restaurant','$dish_name', '$price', '$rating', 0)";
+	$sql = "INSERT INTO foodtable (dish_id, instagram_handle, category_internal, location, restaurant, dish_name, price, rating, is_validated) VALUES ('', '$instagram_handle','$category_internal', '$location', '$restaurant','$dish_name', '$price', '$rating', 1)";
 	
 	if ($db->query($sql)) {
 		echo "Thank you for sharing your response. <a href='../index.php'>Click here</a> to submit another response.";

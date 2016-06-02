@@ -1,10 +1,17 @@
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
-function drawChart(category, type) {
+function drawChart(category, type, priceLowToHigh) {    
     $("#LoadingImage").show();
+       
+    if(!type) {
+        type = DEFAULT_FOOD_TYPE;
+    }
     
-    var category = window.location.hash.substring(1);
+    if(!category) {
+        category = window.location.hash.substring(1);
+    }
+    
     var options = {
         animation: {
             startup:true,
@@ -19,12 +26,12 @@ function drawChart(category, type) {
             }
         }
     };
-    
+
     var jsonData = $.ajax({
         url: "chart-query.php",
         data: {
             category: category, 
-            selectedType: type
+            type: type
         },
         dataType: "json",
         async: false

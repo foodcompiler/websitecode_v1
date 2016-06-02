@@ -28,7 +28,7 @@
             <hr> 
             
             Category:
-            <? include ('php/populateCategories.php'); ?>
+            <? include ('../common/populateCategories.php'); ?>
             <hr> 
             
             Rating:

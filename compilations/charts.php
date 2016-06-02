@@ -21,6 +21,7 @@
 			<img src="ajax-loader.gif" />
 		</div>
 	</div>
+	<h3>* Charts are sorted by Price: Low to High</h3>
 <br/>
 <br/>
 

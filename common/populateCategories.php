@@ -1,7 +1,7 @@
 <?php
 echo '<select name="categorySelector" id="categorySelector">';
 echo '<option value="">Select Category</option>'; 
-echo '<option value="alooparatha">Aloo Paratha</option>';
+echo '<option value="paratha">Paratha</option>';
 echo '<option value="beverage">Beverage</option>';
 echo '<option value="biryani">Biryani</option>';
 echo '<option value="bruschetta">Bruschetta</option>';
