@@ -5,8 +5,8 @@
 </head>
 
 <body onload="loadCategories()">
-    <div id="categories">
-	</div>
+    <select id="categorySelector">
+	</select>
 	
 	<div id="filterDiv" >
 		<h1>Filters</h1>
@@ -18,7 +18,7 @@
 	<div id="chart-div" style="width: 1024px; height: 500px;">
 		<div id="LoadingImage" style="width: 1024px; height: 500px; display:table-cell; vertical-align:middle; text-align:center">
 			<p>Something cool is coming..</p>
-			<img src="ajax-loader.gif" />
+			<img src="images/ajax-loader.gif" />
 		</div>
 	</div>
 	<h3>* Charts are sorted by Price: Low to High</h3>
@@ -31,8 +31,8 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript" src="googlechart.js"></script>
-	<script type="text/javascript" src="util.js"></script>
+	<script type="text/javascript" src="js/googlechart.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
 </body>
 
 </html>

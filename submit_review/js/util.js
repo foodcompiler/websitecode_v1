@@ -1,4 +1,5 @@
 var MIN_LENGTH = 2;
+var FADE_OUT_DURATION = 200;
 
 $(document).ready(function () {
 	$("#location").keyup(function () {
@@ -49,7 +50,7 @@ $(document).ready(function () {
 			$('#restaurant').html('');
 		}
 	});
-	
+
 	$("#dish_name").keyup(function () {
 		var dish_name = $("#dish_name").val();
 		if (dish_name.length >= MIN_LENGTH) {
@@ -74,19 +75,83 @@ $(document).ready(function () {
 		}
 	});
 
+	$("#cuisine").keyup(function () {
+		var cuisine = $("#cuisine").val();
+		if (cuisine.length >= MIN_LENGTH) {
+
+			$.get("../submit_review/php/populateCuisines.php",
+				{
+					cuisine: cuisine
+				}).done(function (data) {
+					$('#cuisineResults').html('');
+					var results = jQuery.parseJSON(data);
+					$(results).each(function (key, value) {
+						$('#cuisineResults').append('<div class="item">' + value + '</div>');
+					})
+
+					$('.item').click(function () {
+						var text = $(this).html();
+						$('#cuisine').val(text);
+					})
+
+				});
+		} else {
+			$('#cuisine').html('');
+		}
+	});
+
+	$("#category").keyup(function () {
+		var category = $("#category").val();
+		if (category.length >= MIN_LENGTH) {
+
+			$.get("../submit_review/php/populateCategory.php",
+				{
+					category: category
+				}).done(function (data) {
+					$('#categoryResults').html('');
+					var results = jQuery.parseJSON(data);
+					$(results).each(function (key, value) {
+						$('#categoryResults').append('<div class="item">' + value + '</div>');
+					})
+
+					$('.item').click(function () {
+						var text = $(this).html();
+						$('#category').val(text);
+					})
+
+				});
+		} else {
+			$('#category').html('');
+		}
+	});
+
     $("#location").blur(function () {
-		$("#locationResults").fadeOut(500);
+		$("#locationResults").fadeOut(FADE_OUT_DURATION);
 	}).focus(function () {
 		$("#locationResults").show();
 	});
+
 	$("#restaurant").blur(function () {
-		$("#restaurantResults").fadeOut(500);
+		$("#restaurantResults").fadeOut(FADE_OUT_DURATION);
 	}).focus(function () {
 		$("#restaurantResults").show();
 	});
+
 	$("#dish_name").blur(function () {
-		$("#dishNameResults").fadeOut(500);
+		$("#dishNameResults").fadeOut(FADE_OUT_DURATION);
 	}).focus(function () {
 		$("#dishNameResults").show();
+	});
+
+	$("#cuisine").blur(function () {
+		$("#cuisineResults").fadeOut(FADE_OUT_DURATION);
+	}).focus(function () {
+		$("#cuisineResults").show();
+	});
+
+	$("#category").blur(function () {
+		$("#categoryResults").fadeOut(FADE_OUT_DURATION);
+	}).focus(function () {
+		$("#categoryResults").show();
 	});
 });
