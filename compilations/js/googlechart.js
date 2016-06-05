@@ -37,10 +37,17 @@ function drawChart(category, type) {
         async: false
     }).responseText;
 
-    var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
-    var data = new google.visualization.DataTable(jsonData);
-    google.visualization.events.addListener(chart, 'ready', function () {
-        $("#LoadingImage").hide();
-    });
-    chart.draw(data, options);
+    if (jsonData.length > 2) {
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
+        var data = new google.visualization.DataTable(jsonData);
+        google.visualization.events.addListener(chart, 'ready', function () {
+            $("#LoadingImage").hide();
+        });
+
+        chart.draw(data, options);
+    }
+    else {
+        var chart_div = document.getElementById('chart-div');
+        chart_div.innerHTML = "<h1>No data available for this category</h1>";
+    }
 }

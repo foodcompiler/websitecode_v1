@@ -19,8 +19,27 @@ function loadCategories() {
                 $('#categorySelector').append('<option class="item">' + value + '</option>');
             })
 
-            $("#categorySelector").on('change', function () {
-                drawChart(this.value, type);
-            });
+            addChangeListener();
+
+            var firstOption = $('#categorySelector option:first').val();
+
+            getSubCategories(firstOption);
         });
+}
+
+function addChangeListener() {
+    $("#categorySelector").on('change', function () {
+        getSubCategories(this.value);
+        drawChart(this.value, type);
+    });
+}
+
+function getSubCategories(parentCategory) {
+    $.get("../submit_review/php/populateFoodOptions.php",
+        {
+            category: parentCategory
+        }).done(function (data) {
+            
+        });
+
 }
