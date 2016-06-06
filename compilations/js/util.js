@@ -39,6 +39,15 @@ function getSubCategories(parentCategory) {
         {
             category: parentCategory
         }).done(function (data) {
+            var results = jQuery.parseJSON(data);
+            $('#filterDiv').empty();
+            
+            var inputs = [];
+            for(var i = 0; i < results.length; i++) {
+                inputs.push('<input type="checkbox" id="ck'+ i +'">'+results[i]+'</input>');
+            }
+            $('#filterDiv').append(inputs.join(''));
+
             
         });
 
