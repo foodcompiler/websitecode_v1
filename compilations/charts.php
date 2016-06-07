@@ -6,11 +6,10 @@
 	</select>
 	
 	<div id="filterDiv" >
-		<!--<form>
-			<input type="radio" id="nonveg" name="type" value="nonveg" onchange="typeChanged()" checked>Non Veg<br>
-			<input type="radio" id="veg" name="type" value="veg" onchange="typeChanged()">Veg<br>
-		</form>-->
 	</div>
+	
+	<button onclick="myFunction()">Click me</button>
+	
 	<div id="chart-div" style="width: 100%; height: 500px;">
 		<div id="LoadingImage" style="width: 1024px; height: 500px; display:table-cell; vertical-align:middle; text-align:center">
 			<p>Something cool is coming..</p>

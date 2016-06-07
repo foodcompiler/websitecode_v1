@@ -1,14 +1,5 @@
 const DEFAULT_FOOD_TYPE = "nonveg";
 
-var category;
-var type;
-
-function typeChanged() {
-    type = document.querySelector('input[name="type"]:checked').value;
-    category = $("#categorySelector").val();
-    drawChart(category, type);
-}
-
 function loadCategories() {
     $.get("../submit_review/php/populateCategory.php",
         {
@@ -19,7 +10,7 @@ function loadCategories() {
                 $('#categorySelector').append('<option class="item">' + value + '</option>');
             })
 
-            addChangeListener();
+            addChangeListenerForParentCategories();
 
             var firstOption = $('#categorySelector option:first').val();
 
@@ -27,10 +18,10 @@ function loadCategories() {
         });
 }
 
-function addChangeListener() {
+function addChangeListenerForParentCategories() {
     $("#categorySelector").on('change', function () {
         getSubCategories(this.value);
-        drawChart(this.value, type);
+        drawChart(this.value, [type]);
     });
 }
 
@@ -41,14 +32,20 @@ function getSubCategories(parentCategory) {
         }).done(function (data) {
             var results = jQuery.parseJSON(data);
             $('#filterDiv').empty();
-            
-            var inputs = [];
-            for(var i = 0; i < results.length; i++) {
-                inputs.push('<input type="checkbox" id="ck'+ i +'">'+results[i]+'</input>');
-            }
-            $('#filterDiv').append(inputs.join(''));
 
-            
+            $(results).each(function (key, value) {
+                var input = '<input type="checkbox" checked value=' + value + ' id="cb' + key + '">' + value + '</input>';
+                $('#filterDiv').append(input);
+            })
+
         });
+}
 
+function myFunction() {
+    var selected = [];
+    $('#filterDiv input:checked').each(function () {
+        selected.push($(this).attr('value'));
+    });
+    console.log('selected: ', selected);
+    drawChart(this.value, selected);
 }

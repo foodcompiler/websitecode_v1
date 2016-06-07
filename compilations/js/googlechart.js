@@ -2,11 +2,8 @@ google.charts.load('current', { packages: ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart(category, type) {
+    console.log('type: ', type);
     $("#LoadingImage").show();
-
-    if (!type) {
-        type = DEFAULT_FOOD_TYPE;
-    }
 
     if (!category) {
         category = $("#categorySelector").val();
@@ -36,7 +33,7 @@ function drawChart(category, type) {
         dataType: "json",
         async: false
     }).responseText;
-
+console.log('jsonData: ', jsonData);
     if (jsonData.length > 2) {
         var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
         var data = new google.visualization.DataTable(jsonData);

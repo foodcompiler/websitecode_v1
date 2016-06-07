@@ -5,9 +5,21 @@
         
         $table = array();
         $selectedCategory = $_GET['category'];
-        $selectedType = $_GET['type'];
         
-        $queryResult = $db->query("SELECT dish_name, restaurant, rating, type from foodtable WHERE category_internal='$selectedCategory' AND type='$selectedType' AND is_validated=1 ORDER BY price ASC");
+        if(empty($_GET['type'])) {
+            $queryResult = $db->query("SELECT dish_name, restaurant, rating, type from foodtable WHERE category_internal='$selectedCategory' AND is_validated=1 ORDER BY price ASC");   
+        }
+        else {
+            $selectedType = $_GET['type'];
+           
+           foreach($selectedType[0] as $child) {
+   echo $child . "\n";
+}
+           
+$implodedSelectedType = implode(', ', $selectedType);
+            // print_r('implodedSelectedType> ', $implodedSelectedType);
+            $queryResult = $db->query("SELECT dish_name, restaurant, rating, type from foodtable WHERE category_internal='$selectedCategory' AND type IN ('$implodedSelectedType') AND is_validated=1 ORDER BY price ASC");
+        }
         
         $number_of_rows = $queryResult->rowCount();
         
