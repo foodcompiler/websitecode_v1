@@ -11,13 +11,9 @@
         }
         else {
             $selectedType = $_GET['type'];
-           
-           foreach($selectedType[0] as $child) {
-   echo $child . "\n";
-}
-           
-$implodedSelectedType = implode(', ', $selectedType);
-            // print_r('implodedSelectedType> ', $implodedSelectedType);
+            $implodedSelectedType = implode("', '", $selectedType);
+            
+            
             $queryResult = $db->query("SELECT dish_name, restaurant, rating, type from foodtable WHERE category_internal='$selectedCategory' AND type IN ('$implodedSelectedType') AND is_validated=1 ORDER BY price ASC");
         }
         

@@ -33,7 +33,7 @@ function drawChart(category, type) {
         dataType: "json",
         async: false
     }).responseText;
-console.log('jsonData: ', jsonData);
+
     if (jsonData.length > 2) {
         var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
         var data = new google.visualization.DataTable(jsonData);
