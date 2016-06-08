@@ -46,6 +46,10 @@ function myFunction() {
     $('#filterDiv input:checked').each(function () {
         selected.push($(this).attr('value'));
     });
-    console.log('selected: ', selected);
-    drawChart(this.value, selected);
+    if(selected.length > 0) {
+        drawChart(this.value, selected);
+    }
+    else {
+        alert('Please select at least one option');
+    }
 }

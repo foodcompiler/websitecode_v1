@@ -2,7 +2,6 @@ google.charts.load('current', { packages: ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart(category, type) {
-    console.log('type: ', type);
     $("#LoadingImage").show();
 
     if (!category) {
