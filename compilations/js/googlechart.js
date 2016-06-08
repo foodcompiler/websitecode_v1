@@ -40,6 +40,12 @@ function drawChart(category, type) {
             $("#LoadingImage").hide();
         });
 
+        google.visualization.events.addListener(chart, 'select', function () {
+            var selectedItem = chart.getSelection()[0];
+            var value = data.getValue(selectedItem.row, 0);
+            console.log('That\'s column no. '+value);
+        });
+
         chart.draw(data, options);
     }
     else {

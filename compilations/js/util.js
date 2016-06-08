@@ -21,7 +21,6 @@ function loadCategories() {
 function addChangeListenerForParentCategories() {
     $("#categorySelector").on('change', function () {
         getSubCategories(this.value);
-        drawChart(this.value, [type]);
     });
 }
 
@@ -41,7 +40,7 @@ function getSubCategories(parentCategory) {
         });
 }
 
-function myFunction() {
+function getInputFromUI() {
     var selected = [];
     $('#filterDiv input:checked').each(function () {
         selected.push($(this).attr('value'));

@@ -26,7 +26,7 @@
             $rows = array();
             foreach($queryResult as $row) {
                 $temp = array();     
-                $temp[] = array('v' => (string) $row['dish_name']. ' ('.$row['restaurant'].')');
+                $temp[] = array('v' => (string) $row['dish_name']. PHP_EOL.' ('.$row['restaurant'].')');
                 $temp[] = array('v' => (int) $row['rating']); 
                 $rows[] = array('c' => $temp);
             }

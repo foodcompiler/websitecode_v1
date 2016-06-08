@@ -8,7 +8,7 @@
 	<div id="filterDiv" >
 	</div>
 	
-	<button onclick="myFunction()">Click me</button>
+	<button onclick="getInputFromUI()">Show Chart</button>
 	
 	<div id="chart-div" style="width: 100%; height: 500px;">
 		<div id="LoadingImage" style="width: 1024px; height: 500px; display:table-cell; vertical-align:middle; text-align:center">
