@@ -1,3 +1,5 @@
+var chart, data;
+
 google.charts.load('current', { packages: ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
@@ -32,24 +34,34 @@ function drawChart(category, type) {
         dataType: "json",
         async: false
     }).responseText;
-
+console.log(jsonData);
     if (jsonData.length > 2) {
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
-        var data = new google.visualization.DataTable(jsonData);
+        chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
+        data = new google.visualization.DataTable(jsonData);
         google.visualization.events.addListener(chart, 'ready', function () {
             $("#LoadingImage").hide();
         });
 
-        google.visualization.events.addListener(chart, 'select', function () {
-            var selectedItem = chart.getSelection()[0];
-            var value = data.getValue(selectedItem.row, 0);
-            console.log('That\'s column no. '+value);
-        });
+        google.visualization.events.addListener(chart, 'select', chartSelectHandler);
 
         chart.draw(data, options);
     }
     else {
         var chart_div = document.getElementById('chart-div');
         chart_div.innerHTML = "<h1>No data available for this category</h1>";
+    }
+}
+
+function chartSelectHandler() {
+    var selectedData = chart.getSelection(), row, item;
+    row = selectedData[0].row;
+    // item = data.getValue(row,0);
+
+    switch (row) {
+        case 0: {
+            var win = window.open("http://stackoverflow.com/questions/4907843/open-a-url-in-a-new-tab-and-not-a-new-window-using-javascript", '_blank');
+            win.focus();
+            break;
+        }
     }
 }

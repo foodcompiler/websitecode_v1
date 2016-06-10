@@ -12,9 +12,12 @@
         else {
             $selectedType = $_GET['type'];
             $implodedSelectedType = implode("', '", $selectedType);
-            
-            
             $queryResult = $db->query("SELECT dish_name, restaurant, rating, type from foodtable WHERE category_internal='$selectedCategory' AND type IN ('$implodedSelectedType') AND is_validated=1 ORDER BY price ASC");
+        }
+        
+        $result = mysql_query($sql);
+        while($row = mysql_fetch_array($result)) {
+            echo $row;
         }
         
         $number_of_rows = $queryResult->rowCount();

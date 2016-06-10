@@ -1,5 +1,3 @@
-const DEFAULT_FOOD_TYPE = "nonveg";
-
 function loadCategories() {
     $.get("../submit_review/php/populateCategory.php",
         {
@@ -45,7 +43,7 @@ function getInputFromUI() {
     $('#filterDiv input:checked').each(function () {
         selected.push($(this).attr('value'));
     });
-    if(selected.length > 0) {
+    if (selected.length > 0) {
         drawChart(this.value, selected);
     }
     else {
