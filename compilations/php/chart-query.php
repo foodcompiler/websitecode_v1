@@ -15,11 +15,6 @@
             $queryResult = $db->query("SELECT dish_name, restaurant, rating, type from foodtable WHERE category_internal='$selectedCategory' AND type IN ('$implodedSelectedType') AND is_validated=1 ORDER BY price ASC");
         }
         
-        $result = mysql_query($sql);
-        while($row = mysql_fetch_array($result)) {
-            echo $row;
-        }
-        
         $number_of_rows = $queryResult->rowCount();
         
         if($number_of_rows > 0) {
@@ -29,7 +24,7 @@
             $rows = array();
             foreach($queryResult as $row) {
                 $temp = array();     
-                $temp[] = array('v' => (string) $row['dish_name']. PHP_EOL.' ('.$row['restaurant'].')');
+                $temp[] = array('v' => (string) $row['dish_name']. PHP_EOL.' (Restaurant/Cafe: '.$row['restaurant'].')');
                 $temp[] = array('v' => (int) $row['rating']); 
                 $rows[] = array('c' => $temp);
             }

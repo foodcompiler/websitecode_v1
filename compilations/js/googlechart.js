@@ -34,7 +34,7 @@ function drawChart(category, type) {
         dataType: "json",
         async: false
     }).responseText;
-console.log(jsonData);
+
     if (jsonData.length > 2) {
         chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
         data = new google.visualization.DataTable(jsonData);
@@ -57,11 +57,13 @@ function chartSelectHandler() {
     row = selectedData[0].row;
     // item = data.getValue(row,0);
 
-    switch (row) {
-        case 0: {
-            var win = window.open("http://stackoverflow.com/questions/4907843/open-a-url-in-a-new-tab-and-not-a-new-window-using-javascript", '_blank');
-            win.focus();
-            break;
-        }
-    }
+    // switch (row) {
+    //     case 0: {
+            
+    //         break;
+    //     }
+    // }
+    
+    var win = window.open("http://www.zomato.com", '_blank');
+    win.focus();
 }
