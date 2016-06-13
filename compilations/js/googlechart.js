@@ -17,12 +17,16 @@ function drawChart(category, type) {
             easing: 'in',
         },
         vAxis: {
+            title: 'Ratings',
             minValue: 0,
             maxValue: 5,
             gridlines: {
                 count: 6
             }
-        }
+        },
+        hAxis: { 
+            title: 'Dish name'
+        } 
     };
 
     var jsonData = $.ajax({
@@ -35,35 +39,41 @@ function drawChart(category, type) {
         async: false
     }).responseText;
 
-    if (jsonData.length > 2) {
-        chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
-        data = new google.visualization.DataTable(jsonData);
-        google.visualization.events.addListener(chart, 'ready', function () {
-            $("#LoadingImage").hide();
-        });
+    var parsedJsonData = JSON.parse(jsonData);
 
-        google.visualization.events.addListener(chart, 'select', chartSelectHandler);
+    var chartObj = [];
+    chartObj.push([['Dish Name'], ['Rating']]);
 
-        chart.draw(data, options);
+    for (var i = 0; i < parsedJsonData.length; i++) {
+        var mainObj = parsedJsonData[i];
+        chartObj.push([mainObj['dish_id'], parseInt(mainObj['rating'])]);
     }
-    else {
-        var chart_div = document.getElementById('chart-div');
-        chart_div.innerHTML = "<h1>No data available for this category</h1>";
-    }
+
+    var dataSet = google.visualization.arrayToDataTable(chartObj);
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
+    chart.draw(dataSet, options);
+
+    google.visualization.events.addListener(chart, 'ready', function () {
+        $("#LoadingImage").hide();
+    });
+
+    google.visualization.events.addListener(chart, 'select', chartSelectHandler);
 }
 
 function chartSelectHandler() {
     var selectedData = chart.getSelection(), row, item;
     row = selectedData[0].row;
-    // item = data.getValue(row,0);
+    item = data.getValue(row, 0);
 
-    // switch (row) {
-    //     case 0: {
-            
-    //         break;
-    //     }
-    // }
-    
-    var win = window.open("http://www.zomato.com", '_blank');
-    win.focus();
+    console.log(item);
+
+    switch (row) {
+        case 0: {
+
+            break;
+        }
+    }
+
+    // var win = window.open("http://www.zomato.com", '_blank');
+    // win.focus();
 }
