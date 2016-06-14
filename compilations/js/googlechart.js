@@ -1,4 +1,4 @@
-var chart, data;
+var chart, fullChartData;
 
 google.charts.load('current', { packages: ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
@@ -17,16 +17,13 @@ function drawChart(category, type) {
             easing: 'in',
         },
         vAxis: {
-            title: 'Ratings',
             minValue: 0,
             maxValue: 5,
             gridlines: {
                 count: 6
-            }
-        },
-        hAxis: { 
-            title: 'Dish name'
-        } 
+            },
+            ticks: [{ v: 5, f: 'Delicious' }, { v: 3, f: 'Average' }, { v: 1, f: 'Bad' }]
+        }
     };
 
     var jsonData = $.ajax({
@@ -39,18 +36,19 @@ function drawChart(category, type) {
         async: false
     }).responseText;
 
-    var parsedJsonData = JSON.parse(jsonData);
+    fullChartData = JSON.parse(jsonData);
 
     var chartObj = [];
     chartObj.push([['Dish Name'], ['Rating']]);
 
-    for (var i = 0; i < parsedJsonData.length; i++) {
-        var mainObj = parsedJsonData[i];
-        chartObj.push([mainObj['dish_id'], parseInt(mainObj['rating'])]);
+    for (var i = 0; i < fullChartData.length; i++) {
+        var mainObj = fullChartData[i];
+        var completeDishNameString = mainObj['dish_name'] + ' (ID: ' + mainObj['dish_id'] + ')';
+        chartObj.push([completeDishNameString, parseInt(mainObj['rating'])]);
     }
 
     var dataSet = google.visualization.arrayToDataTable(chartObj);
-    var chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
+    chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
     chart.draw(dataSet, options);
 
     google.visualization.events.addListener(chart, 'ready', function () {
@@ -63,17 +61,14 @@ function drawChart(category, type) {
 function chartSelectHandler() {
     var selectedData = chart.getSelection(), row, item;
     row = selectedData[0].row;
-    item = data.getValue(row, 0);
 
-    console.log(item);
+    var restaurantLink = fullChartData[row]['restaurant_link'];
 
-    switch (row) {
-        case 0: {
-
-            break;
-        }
+    if (restaurantLink) {
+        var win = window.open(restaurantLink, '_blank');
+        win.focus();
     }
-
-    // var win = window.open("http://www.zomato.com", '_blank');
-    // win.focus();
+    else {
+        alert('Place not available on Zomato. Email foodcompiler@gmail.com to know more');
+    }
 }
