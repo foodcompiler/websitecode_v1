@@ -72,13 +72,8 @@ function chartSelectHandler() {
     var selectedData = chart.getSelection(), row, item;
     row = selectedData[0].row;
 
-    var restaurantLink = fullChartData[row]['restaurant_link'];
-
-    if (restaurantLink) {
-        var win = window.open(restaurantLink, '_blank');
-        win.focus();
-    }
-    else {
-        alert('Place not available on Zomato. Email foodcompiler@gmail.com to know more');
-    }
+    var dishId = fullChartData[row]['dish_id'];
+    
+    var win = window.open('../dishDetails/index.html#' + dishId, '_blank');
+    win.focus();
 }
