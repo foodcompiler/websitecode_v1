@@ -23,20 +23,15 @@
             Rating:
             <? include ('php/populateRatings.php') ?>
             <hr>
-
-            <input type="submit" value=" Submit " name="submit"/>
-
-            <h3>Sharing is caring! Optional, however</h3>
+            
+            Type: <input type="text" placeholder="veg, chicken, mutton, hot, cold" name="type" id="type">
+            <br> 
+            <hr>
             
             Category: <input type="text" placeholder="Burger, Pasta, Paratha, Gravy Chicken" name="category" id="category">
             <br> 
             <div id="categoryResults"></div>
             <hr>
-            
-            Cuisine: <input type="text" placeholder="italian, punjabi" name="cuisine" id="cuisine">
-            <br> 
-            <div id="cuisineResults"></div>
-            <hr> 
             
             Presentation:
             <? include ('php/populatePresentationRatings.php') ?>
@@ -46,10 +41,7 @@
             <br> 
             <hr> 
             
-            Ingredients: <input type="text" placeholder="bacon, egg, lemon, chocolate, etc." name="ingredients" id="ingredients">
-            <br> 
-            <hr> 
-            
+            <input type="submit" value=" Submit " name="submit"/>            
 
         </form>
     </div>

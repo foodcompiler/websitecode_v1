@@ -17,7 +17,6 @@
 		</div>
 	</div>
 	<h2>* Charts are sorted by Price: Low to High</h2>
-	<h3>* Click on the respective bar to read more</h3>
 <br/>
 <br/>
 

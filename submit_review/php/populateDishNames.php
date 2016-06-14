@@ -8,7 +8,7 @@ if (!isset($_GET['dish_name'])) {
 function search($keyword) {
   
     $db = getDbConnection();
-    $stmt = $db->prepare("SELECT DISTINCT dish_name FROM foodtable WHERE dish_name LIKE '%".$keyword."%' ORDER BY dish_name ASC");
+    $stmt = $db->prepare("SELECT DISTINCT dish_name FROM foodtable WHERE is_validated=1 AND dish_name LIKE '%".$keyword."%' ORDER BY dish_name ASC");
 
     $keyword = $keyword . '%';
     $stmt->bindParam(1, $keyword, PDO::PARAM_STR, 100);

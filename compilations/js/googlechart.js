@@ -11,6 +11,9 @@ function drawChart(category, type) {
     }
 
     var options = {
+        tooltip: {
+            isHtml: true
+        },
         animation: {
             startup: true,
             duration: 1000,
@@ -39,12 +42,19 @@ function drawChart(category, type) {
     fullChartData = JSON.parse(jsonData);
 
     var chartObj = [];
-    chartObj.push([['Dish Name'], ['Rating']]);
+    chartObj.push([['Dish Name'], ['Rating'], {type:'string', role:'tooltip', 'p': {'html': true}}]);
 
     for (var i = 0; i < fullChartData.length; i++) {
         var mainObj = fullChartData[i];
         var completeDishNameString = mainObj['dish_name'] + ' (ID: ' + mainObj['dish_id'] + ')';
-        chartObj.push([completeDishNameString, parseInt(mainObj['rating'])]);
+        
+        var customTooltipText;
+        if(mainObj['price'] == 0) 
+            customTooltipText = mainObj['restaurant'] + ', ' + mainObj['location'];
+        else 
+            customTooltipText = mainObj['restaurant'] + ', ' + mainObj['location'] + ', Rs. ' + mainObj['price'] + '/-';
+        
+        chartObj.push([completeDishNameString, parseInt(mainObj['rating']), customTooltipText]);
     }
 
     var dataSet = google.visualization.arrayToDataTable(chartObj);

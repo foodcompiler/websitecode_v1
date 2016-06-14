@@ -8,7 +8,7 @@ if (!isset($_GET['location'])) {
 function searchForLocations($location) {
   
     $db = getDbConnection();
-    $stmt = $db->prepare("SELECT DISTINCT location FROM foodtable WHERE location LIKE '%".$location."%' ORDER BY location ASC");
+    $stmt = $db->prepare("SELECT DISTINCT location FROM foodtable WHERE is_validated=1 AND location LIKE '%".$location."%' ORDER BY location ASC");
 
     $location = $location . '%';
     $stmt->bindParam(1, $location, PDO::PARAM_STR, 100);
