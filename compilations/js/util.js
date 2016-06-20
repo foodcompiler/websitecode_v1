@@ -31,7 +31,7 @@ function getSubCategories(parentCategory) {
             $('#filterDiv').empty();
 
             $(results).each(function (key, value) {
-                var input = '<input type="checkbox" checked value=' + value + ' id="cb' + key + '">' + value + '</input>';
+                var input = '<input type="checkbox" style="margin-left:15px;" checked value=' + value + ' id="cb' + key + '">' + ' ' + value + '</input>';
                 $('#filterDiv').append(input);
             })
 
@@ -43,6 +43,7 @@ function getInputFromUI() {
     $('#filterDiv input:checked').each(function () {
         selected.push($(this).attr('value'));
     });
+    
     if (selected.length > 0) {
         drawChart(this.value, selected);
     }
