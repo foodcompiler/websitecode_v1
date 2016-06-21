@@ -16,10 +16,10 @@ if(isset($_POST["submit"])){
 	$sql = "INSERT INTO foodtable (dish_id, category, location, restaurant, type, dish_name, price, rating, is_validated) VALUES ('', '$category', '$location', '$restaurant', '$type', '$dish_name', '$price', '$rating', 0)";
 	
 	if ($db->query($sql)) {
-		echo "Thank you for sharing your response. <a href='../index.php'>Click here</a> to submit another response.";
+		echo "<h2>Thank you for sharing your response. <a href='../index.php'>Click here</a> to submit another response.</h2>";
 	}
 	else{
-		echo "Error submitting response, please try again. If problem persists, please email to foodcompiler@gmail.com with the details.";
+		echo "<h2>Error submitting response, please try again. If problem persists, please email to foodcompiler@gmail.com with the details.</h2>";
 	}
 }
 else {

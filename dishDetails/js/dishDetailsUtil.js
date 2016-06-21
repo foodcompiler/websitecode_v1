@@ -16,4 +16,4 @@ document.getElementById("restaurant").innerHTML = parsedJsonData[0]['restaurant'
 document.getElementById("rating").innerHTML = parsedJsonData[0]['rating'];
 document.getElementById("category").innerHTML = parsedJsonData[0]['category'];
 document.getElementById("price").innerHTML = parsedJsonData[0]['price'];
-document.getElementById("dishImage").src = 'https://img.zmtcdn.com/data/reviews_photos/964/59038315793b192b96f559e8cd0c4964_1465276645.jpg';
+document.getElementById("dishImage").src = 'LINK_TO_PHOTO_ALBUM';

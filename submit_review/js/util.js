@@ -1,6 +1,18 @@
 var MIN_LENGTH = 2;
 var FADE_OUT_DURATION = 200;
 
+function loadCategories() {
+    $.get("../submit_review/php/populateCategory.php",
+        {
+            category: ''
+        }).done(function (data) {
+            var results = jQuery.parseJSON(data);
+            $(results).each(function (key, value) {
+                $('#categoryResults').append('<option>' + value + '</option>');
+            })
+        });
+}
+
 $(document).ready(function () {
 	$("#location").keyup(function () {
 		var location = $("#location").val();
@@ -100,31 +112,6 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#category").keyup(function () {
-		var category = $("#category").val();
-		if (category.length >= MIN_LENGTH) {
-
-			$.get("../submit_review/php/populateCategory.php",
-				{
-					category: category
-				}).done(function (data) {
-					$('#categoryResults').html('');
-					var results = jQuery.parseJSON(data);
-					$(results).each(function (key, value) {
-						$('#categoryResults').append('<div class="item">' + value + '</div>');
-					})
-
-					$('.item').click(function () {
-						var text = $(this).html();
-						$('#category').val(text);
-					})
-
-				});
-		} else {
-			$('#category').html('');
-		}
-	});
-
     $("#location").blur(function () {
 		$("#locationResults").fadeOut(FADE_OUT_DURATION);
 	}).focus(function () {
@@ -147,11 +134,5 @@ $(document).ready(function () {
 		$("#cuisineResults").fadeOut(FADE_OUT_DURATION);
 	}).focus(function () {
 		$("#cuisineResults").show();
-	});
-
-	$("#category").blur(function () {
-		$("#categoryResults").fadeOut(FADE_OUT_DURATION);
-	}).focus(function () {
-		$("#categoryResults").show();
 	});
 });

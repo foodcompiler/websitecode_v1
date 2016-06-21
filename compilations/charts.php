@@ -31,7 +31,7 @@
                   <ul class="nav navbar-nav navbar-right">
                      <li class="active"><a href="http://foodcompiler.wordpress.com" target="_blank">Blogs <span class="sr-only">(current)</span></a></li>
                      <li class="active"><a href="../submit_review/index.php" target="_blank">Upload Review <span class="sr-only">(current)</span></a></li>
-					 <li class="active"><a href="#" target="_blank">Know me <span class="sr-only">(current)</span></a></li>
+					           <li class="active"><a href="#" target="_blank">Know me <span class="sr-only">(current)</span></a></li>
                   </ul>
                </div>
             </div>
