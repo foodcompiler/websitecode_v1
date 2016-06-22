@@ -10,25 +10,6 @@ function drawChart(category, type) {
         category = $("#categorySelector").val();
     }
 
-    var options = {
-        tooltip: {
-            isHtml: true
-        },
-        animation: {
-            startup: true,
-            duration: 1000,
-            easing: 'in',
-        },
-        vAxis: {
-            minValue: 0,
-            maxValue: 5,
-            gridlines: {
-                count: 6
-            },
-            ticks: [{ v: 5, f: 'Delicious' }, { v: 3, f: 'Average' }, { v: 1, f: 'Bad' }]
-        }
-    };
-
     var jsonData = $.ajax({
         url: "php/chart-query.php",
         data: {
@@ -50,15 +31,42 @@ function drawChart(category, type) {
         
         var customTooltipText;
         if(mainObj['price'] == 0) 
-            customTooltipText = mainObj['restaurant'] + ', ' + mainObj['location'];
+            customTooltipText = mainObj['restaurant'] + ', ' + mainObj['location'] + ' (Tap to know more)';
         else 
-            customTooltipText = mainObj['restaurant'] + ', ' + mainObj['location'] + ', Rs. ' + mainObj['price'] + '/-';
+            customTooltipText = mainObj['restaurant'] + ', ' + mainObj['location'] + ', Rs. ' + mainObj['price'] + '/-' + ' (Tap to know more)';
         
         chartObj.push([completeDishNameString, parseInt(mainObj['rating']), customTooltipText]);
     }
 
     var dataSet = google.visualization.arrayToDataTable(chartObj);
     chart = new google.visualization.ColumnChart(document.getElementById('chart-div'));
+    
+    var options = {
+        tooltip: {
+            isHtml: true
+        },
+        animation: {
+            startup: true,
+            duration: 1000,
+            easing: 'in',
+            showTextEvery: 1
+        },
+        chartArea: {
+            top: 65,
+            height: '40%' 
+        },
+        vAxis: {
+            minValue: 0,
+            maxValue: 5,
+            gridlines: {
+                count: 6
+            },
+            ticks: [{ v: 5, f: 'Delicious' }, { v: 3, f: 'Average' }, { v: 1, f: 'Bad' }]
+        },
+        bar: {groupWidth: 50},
+        width: dataSet.getNumberOfRows() * 100
+    };
+    
     chart.draw(dataSet, options);
 
     google.visualization.events.addListener(chart, 'ready', function () {
