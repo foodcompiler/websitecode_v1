@@ -12,7 +12,7 @@
   <link href="../css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/owl.carousel.css">
   <link href="../css/style.css" rel="stylesheet">
-
+  <link href="../css/gridCss.css" rel="stylesheet">
 </head>
 
 <body onload="loadCategories()">
@@ -51,18 +51,15 @@
               </div>
               <div id="filterDiv" class="form-group">
               </div>
-              <button onclick="getInputFromUI()" type="button" class="btn btns" style="margin-left:15px;">Show Chart</button>
+              <button onclick="getInputFromUI()" type="button" class="btn btns" style="margin-left:15px;">Show Grid</button>
             </form>
           </div>
           <hr>
-          <div class="row" style="margin-top:30px;">
-            <p class="text_brown"><small>Note: Charts are sorted by Price: Low to High</small></p>
-          </div>
-          <div id="chart-div" class="row" style="overflow-x: scroll; overflow-y: hidden;">
-            <div id="LoadingImage" style="width: 1024px; height: 500px; display:table-cell; vertical-align:middle; text-align:center">
+          <div id="grid-div" class="row" style="overflow-x: scroll; overflow-y: hidden;">
+            <!-- <div id="loadingImage" style="width: 1024px; height: 500px; display:table-cell; vertical-align:middle; text-align:center">
               <p>Something cool is coming..</p>
               <img src="images/ajax-loader.gif" />
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -86,8 +83,9 @@
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="js/googlechart.js"></script>
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript" src="js/googlechart.js"></script> -->
+<script type="text/javascript" src="js/gridmanager.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
 
 </html>

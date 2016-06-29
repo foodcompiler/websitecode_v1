@@ -1,3 +1,5 @@
+showGrid('', []);
+
 function loadCategories() {
     $.get("../submit_review/php/populateCategory.php",
         {
@@ -45,7 +47,7 @@ function getInputFromUI() {
     });
     
     if (selected.length > 0) {
-        drawChart(this.value, selected);
+        showGrid(this.value, selected);
     }
     else {
         alert('Please select at least one option');
