@@ -1,5 +1,3 @@
-showGrid('', []);
-
 function loadCategories() {
     $.get("../submit_review/php/populateCategory.php",
         {

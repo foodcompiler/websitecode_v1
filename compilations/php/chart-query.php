@@ -7,12 +7,12 @@
         $selectedCategory = $_GET['category'];
         
         if(empty($_GET['type'])) {
-            $queryResult = $db->query("SELECT dish_id, dish_name, restaurant, rating, type, photo_link, location, price from foodtable WHERE category='$selectedCategory' AND is_validated=1 ORDER BY price ASC");   
+            $queryResult = $db->query("SELECT dish_id, dish_name, restaurant, rating, type, photo_link, location, price from foodtable WHERE category='$selectedCategory' AND is_validated=1 ORDER BY rating DESC, price ASC");   
         }
         else {
             $selectedType = $_GET['type'];
             $implodedSelectedType = implode("', '", $selectedType);
-            $queryResult = $db->query("SELECT dish_id, dish_name, restaurant, rating, type, photo_link, location, price from foodtable WHERE category='$selectedCategory' AND type IN ('$implodedSelectedType') AND is_validated=1 ORDER BY price ASC");
+            $queryResult = $db->query("SELECT dish_id, dish_name, restaurant, rating, type, photo_link, location, price from foodtable WHERE category='$selectedCategory' AND type IN ('$implodedSelectedType') AND is_validated=1 ORDER BY rating DESC, price ASC");
         }
         
         $result = $queryResult->fetchAll(PDO::FETCH_ASSOC);
