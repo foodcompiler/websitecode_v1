@@ -22,7 +22,17 @@ function showGrid(category, type) {
     
     for (var i = 0; i < parsedData.length; i++) {
         var btn = document.createElement("BUTTON");
-        btn.setAttribute("class", "accordion");
+
+        if(parsedData[i]["rating"] == 5) {
+            btn.setAttribute("class", "accordion-delicious");
+        }
+        else if(parsedData[i]["rating"] == 3) {
+            btn.setAttribute("class", "accordion-average");
+        }
+        else {
+            btn.setAttribute("class", "accordion-bad");
+        }
+        
         var t = document.createTextNode(parsedData[i]["dish_name"] + ', ' + parsedData[i]["restaurant"] + ' (Price: ' + parsedData[i]["price"] + ')' + ' (' + parsedData[i]["rating"] + ')');
         btn.appendChild(t);
         parentDiv.appendChild(btn);
@@ -39,7 +49,8 @@ function showGrid(category, type) {
     $('#grid-div').empty();
     $('#grid-div').append(parentDiv);
 
-    var acc = document.getElementsByClassName("accordion");
+    var acc = document.getElementsByClassName("accordion-delicious accordion-average");
+    console.log(acc);
     var i;
 
     for (i = 0; i < acc.length; i++) {
