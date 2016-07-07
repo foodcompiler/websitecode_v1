@@ -24,36 +24,50 @@ function showGrid(category, type) {
         var btn = document.createElement("BUTTON");
 
         if(parsedData[i]["rating"] == 5) {
-            btn.setAttribute("class", "accordion-delicious");
+            btn.setAttribute("class", "accordion_delicious");
         }
         else if(parsedData[i]["rating"] == 3) {
-            btn.setAttribute("class", "accordion-average");
+            btn.setAttribute("class", "accordion_average");
         }
         else {
-            btn.setAttribute("class", "accordion-bad");
+            btn.setAttribute("class", "accordion_bad");
         }
         
-        var t = document.createTextNode(parsedData[i]["dish_name"] + ', ' + parsedData[i]["restaurant"] + ' (Price: ' + parsedData[i]["price"] + ')' + ' (' + parsedData[i]["rating"] + ')');
+        var t = document.createTextNode(parsedData[i]["restaurant"]);
         btn.appendChild(t);
         parentDiv.appendChild(btn);
 
         var div = document.createElement("div");
         div.setAttribute("class", "panel");
-        var newlabel = document.createElement("Label");
-        newlabel.innerText = parsedData[i]["dish_name"];
-        div.appendChild(newlabel);
+        var detailLabel = document.createElement("Label");
+        detailLabel.innerText = 'Dish name: ' + parsedData[i]["dish_name"] + '\nRestaurant: ' + parsedData[i]["restaurant"] + '\nLocation: ' + parsedData[i]["location"];
+
+        var readMoreLabel = document.createElement("div");
+        readMoreLabel.innerHTML = 'Read more';
+
+
+        div.appendChild(detailLabel);
+        div.appendChild(readMoreLabel);
+
         parentDiv.appendChild(div);
-        
     }
 
     $('#grid-div').empty();
     $('#grid-div').append(parentDiv);
 
-    var acc = document.getElementsByClassName("accordion-delicious accordion-average");
-    console.log(acc);
-    var i;
+// to be fixed later
+    var acc_delicious = document.getElementsByClassName("accordion_delicious");
+    toggleActive(acc_delicious);
 
-    for (i = 0; i < acc.length; i++) {
+    var acc_average = document.getElementsByClassName("accordion_average");
+    toggleActive(acc_average);
+
+    var acc_bad = document.getElementsByClassName("accordion_bad");
+    toggleActive(acc_bad);
+}
+
+function toggleActive(acc) {
+    for (var i = 0; i < acc.length; i++) {
         acc[i].onclick = function () {
             this.classList.toggle("active");
             this.nextElementSibling.classList.toggle("show");

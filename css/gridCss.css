@@ -11,9 +11,9 @@ button.accordion {
     transition: 0.4s;
 }
 
-button.accordion-delicious {
+button.accordion_delicious {
     background-color: #228B22;
-    color: #444;
+    color: #ffffff;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -23,7 +23,7 @@ button.accordion-delicious {
     transition: 0.4s;
 }
 
-button.accordion-average {
+button.accordion_average {
     background-color: #3CB371	;
     color: #444;
     cursor: pointer;
@@ -35,7 +35,7 @@ button.accordion-average {
     transition: 0.4s;
 }
 
-button.accordion-bad {
+button.accordion_bad {
     background-color: #00FF7F;
     color: #444;
     cursor: pointer;
@@ -55,7 +55,7 @@ button.accordion.active, button.accordion:hover {
 /* Style the accordion panel. Note: hidden by default */
 div.panel {
     padding: 0 18px;
-    background-color: white;
+    background-color: #ffffff;
     display: none;
 }
 
@@ -64,14 +64,14 @@ div.panel.show {
     display: block !important;
 }
 
-button.accordion:after {
-    content: '▼'; /* Unicode character for "plus" sign (+) */
+button.accordion_delicious:after, button.accordion_average:after, button.accordion_bad:after {
+    content: '+';
     font-size: 26px;
-    color: #777;
+    color: #ffffff;
     float: right;
     margin-left: 5px;
 }
 
-button.accordion.active:after {
-    content: "▲"; /* Unicode character for "minus" sign (-) */
+button.accordion_delicious.active:after, button.accordion_average.active:after, button.accordion_bad.active:after {
+    content: "-";
 }
