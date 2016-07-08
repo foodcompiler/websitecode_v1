@@ -43,8 +43,8 @@ function showGrid(category, type) {
         detailLabel.innerText = 'Dish name: ' + parsedData[i]["dish_name"] + '\nRestaurant: ' + parsedData[i]["restaurant"] + '\nLocation: ' + parsedData[i]["location"];
 
         var readMoreLabel = document.createElement("div");
-        readMoreLabel.innerHTML = 'Read more';
-
+        var linkString = "../dishDetails/index.html#" + parsedData[i]["dish_id"];
+        readMoreLabel.innerHTML = '<a href=' + linkString + ' target="_blank">Read more</a>';
 
         div.appendChild(detailLabel);
         div.appendChild(readMoreLabel);

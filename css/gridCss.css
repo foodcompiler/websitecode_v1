@@ -18,33 +18,36 @@ button.accordion_delicious {
     padding: 18px;
     width: 100%;
     text-align: left;
-    border: none;
+    border: 1px solid;
     outline: none;
     transition: 0.4s;
+    border-radius: 5px;
 }
 
 button.accordion_average {
     background-color: #3CB371	;
-    color: #444;
+    color: #ffffff;
     cursor: pointer;
     padding: 18px;
     width: 100%;
     text-align: left;
-    border: none;
+    border: 1px solid;
     outline: none;
     transition: 0.4s;
+    border-radius: 5px;
 }
 
 button.accordion_bad {
     background-color: #00FF7F;
-    color: #444;
+    color: #ffffff;
     cursor: pointer;
     padding: 18px;
     width: 100%;
     text-align: left;
-    border: none;
+    border: 1px solid;
     outline: none;
     transition: 0.4s;
+    border-radius: 5px;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
